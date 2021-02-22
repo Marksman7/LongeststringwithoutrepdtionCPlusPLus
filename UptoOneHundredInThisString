@@ -1,0 +1,113 @@
+#include <iostream>
+#include<vector>
+#include <string>
+
+class Solution {
+    private:
+        bool start = false;
+
+        std::string spell = "";
+
+        std::string word = "";
+
+        int tracker = 0;
+
+        int headsecond = 100;
+
+        int head = 100;
+
+        int end = 100;
+
+public:
+    int lengthOfLongestSubstring(std::string s) {
+
+        int lengthy = s.length();
+
+        
+
+        word = s;
+
+        int finals = 0;
+
+
+        for (int i = 0; i < lengthy; i++)
+        {
+            
+            tracker = 0;
+            for (int a = 0; a < lengthy; a++)
+            {
+                if (s.at(i) == s.at(a))
+                {
+                    tracker = tracker + 1;
+
+                    if (tracker == 2)
+                    {
+                        if (head >= a)
+                        {
+                            this->headsecond = a;
+                        }
+                    }
+
+                    if (tracker == 3)
+                    {
+                        if (end >= a)
+                        {
+                            this->end = a;
+                        }
+                    }
+
+                }
+                
+            }
+
+            if (headsecond < head)
+            {
+                head = headsecond;
+            }
+        }
+
+        tracker = 0;
+        for (int g = head; g < end; g++)
+        {
+            spell = spell + s.at(g);
+            tracker = tracker + 1;
+        }
+
+
+        std::cout << spell << std::endl;
+
+        return tracker;
+
+    }
+};
+
+int main()
+{
+
+    Solution a = Solution();
+
+    std::string word = "";
+
+    std::cin >> word;
+
+    //std::string sok = "";
+
+    int leng = word.length();
+
+    int heres = 0;
+
+    //int End = a.lengthOfLongestSubstring(word);
+
+    int End = a.lengthOfLongestSubstring(word);
+
+
+
+
+    std::cout << End << std::endl;
+    //std::cout << sok << std::endl;
+
+
+
+
+}
+
